@@ -52,6 +52,14 @@ var node = svg.append("g")
   .enter().append("circle")
     .attr("r", function(d) { return d.group === 1 ? 15 : 10; }) // group이 1인 경우 크기를 더 크게 설정
     .attr("fill", function(d) { return color(d.group); })
+    .on("click", function(d) {
+      // 예를 들어, 노드의 id에 따라 다른 URL로 리디렉션
+      if (d.id === "CAPTools-based Automatic Parallelizer Using OpenMP (CAPO)") {
+          window.open('https://software.nasa.gov/software/ARC-14487-1', '_blank');
+      } else if(d.id === "CODE-A Software Framework For Control and Observation In Distributed Environments") {
+          window.open('https://www.nas.nasa.gov/software/software.html', '_blank');
+      }
+    })
     .call(d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
