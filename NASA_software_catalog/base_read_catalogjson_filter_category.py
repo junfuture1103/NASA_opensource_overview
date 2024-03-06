@@ -1,7 +1,7 @@
 import json
 
 # 사용자가 검색하고 싶은 카테고리 지정
-desired_category = "Data Servers Processing and Handling"
+desired_category = "Autonomous Systems"
 
 # 파일에서 JSON 데이터 로드
 with open('catalog.json', 'r') as file:

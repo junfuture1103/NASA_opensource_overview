@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>D3 Category Visualization Example</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+    <svg width="600" height="400"></svg>
+
+    <script>
+      // 예제 데이터
+      const data = [
+        {category: "Data Processing", count: 4},
+        {category: "Open Source", count: 7},
+        {category: "Propulsion", count: 3},
+        {category: "System Testing", count: 5}
+      ];
+
+      // SVG 컨테이너 설정
+      const svg = d3.select("svg"),
+            margin = {top: 20, right: 20, bottom: 30, left: 40},
+            width = +svg.attr("width") - margin.left - margin.right,
+            height = +svg.attr("height") - margin.top - margin.bottom;
+
+      // X축과 Y축 스케일 설정
+      const x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+            y = d3.scaleLinear().rangeRound([height, 0]);
+
+      const g = svg.append("g")
+                   .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      x.domain(data.map(d => d.category));
+      y.domain([0, d3.max(data, d => d.count)]);
+
+      // X축 추가
+      g.append("g")
+       .attr("class", "axis axis--x")
+       .attr("transform", `translate(0,${height})`)
+       .call(d3.axisBottom(x));
+
+      // Y축 추가
+      g.append("g")
+       .attr("class", "axis axis--y")
+       .call(d3.axisLeft(y).ticks(10, "s"))
+       .append("text")
+       .attr("transform", "rotate(-90)")
+       .attr("y", 6)
+       .attr("dy", "0.71em")
+       .attr("text-anchor", "end")
+       .text("Count");
+
+      // 막대 차트 추가
+      g.selectAll(".bar")
+       .data(data)
+       .enter().append("rect")
+       .attr("class", "bar")
+       .attr("x", d => x(d.category))
+       .attr("y", d => y(d.count))
+       .attr("width", x.bandwidth())
+       .attr("height", d => height - y(d.count));
+    </script>
+</body>
+</html>
