@@ -1,0 +1,16 @@
+{
+    "nodes": [
+      {"id": "Data Servers Processing and Handling", "group": 1},
+      {"id": "Aeronautics", "group": 1},
+      {"id": "Autonomous Systems", "group": 1},
+      {"id": "Business Systems and Project Management", "group": 1},
+      {"id": "Crew and Life Support", "group": 1},
+      {"id": "CODE-A Software Framework For Control and Observation In Distributed Environments", "group": 2},
+      {"id": "CAPTools-based Automatic Parallelizer Using OpenMP (CAPO)", "group": 2}
+    ],
+    "links": [
+      {"source": "Data Servers Processing and Handling", "target": "CODE-A Software Framework For Control and Observation In Distributed Environments", "value": 1},
+      {"source": "Data Servers Processing and Handling", "target": "CAPTools-based Automatic Parallelizer Using OpenMP (CAPO)", "value": 1}
+    ]
+}
+  
