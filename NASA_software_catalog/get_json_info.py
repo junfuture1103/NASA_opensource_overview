@@ -31,3 +31,6 @@ print(f"Unique categories: {unique_categories}")
 print("Top 10 Categories by Number of Items:")
 for category, count in sorted_categories:
     print(f"- {category} ({count} items)")
+    print("category list : ")
+    for name in category_items[category]:
+        print(name)
